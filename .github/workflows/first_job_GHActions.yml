@@ -9,10 +9,6 @@ env:
   APPLICATION_NAME : "MyFlask"
   DEPLOY_PACKAGE_NAME     : "flask-deploy-ver-${{ github.sha }}"
   
-    
-  
-
-
 on:
   push:
     branches: 
@@ -34,6 +30,12 @@ jobs:
 
     - name: List current folder 
       run : ls -la 
+
+    - name: git clone my repo
+      uses: actions/checkout@v1
+      
+    - name: List current folder 
+      run : ls -la 
       
       
 
@@ -47,6 +49,12 @@ jobs:
 
     - name: Printing Deployment package  
       run: echo "Deploy package name is ${{ env.DEPLOY_PACKAGE_NAME }}"
+
+    - name: Let's test some packages if they are here 1
+      run : aws --version
+
+    - name: Let's test some packages if they are here 2
+      run : zip
     
     
     

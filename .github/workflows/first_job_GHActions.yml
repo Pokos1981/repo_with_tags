@@ -7,7 +7,7 @@
 name: My-GITHUB-Actions-Basic
 env:
   APPLICATION_NAME : "MyFlask"
-  PACKAGE_NAME     : "flask-deploy-ver-$ {{ github.sha }}"
+  DEPLOY_PACKAGE_NAME     : "flask-deploy-ver-$ {{ github.sha }}"
   
     
   
@@ -25,6 +25,12 @@ jobs:
     steps:
     - name: Print Hello Message 
       run: echo "Hello World from My_testing job"
+
+    - name: Execute few commands 
+      run: | 
+        echo "Hello Message1"
+        echo "Hello Message2"
+        echo "Application name: ${{ env.APPLICATION_NAME }}"
       
 
   my_deploy:
@@ -34,6 +40,10 @@ jobs:
     steps: 
     - name: Print Hello Message
       run: echo "Hello World from My_deploy job"
+
+    - name: Printing Deployment package  
+      run: echo "Deploy package name is ${{ env. DEPLOY_PACKAGE_NAME }}"
+    
     
     
 
